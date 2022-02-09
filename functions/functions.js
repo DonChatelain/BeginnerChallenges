@@ -1,0 +1,10 @@
+export { printOneThruTen } from "./printOneThruTen.js";
+export { printMultiplyTables } from "./printMultiplyTables.js";
+export { sumNumbers } from './sumNumbers.js';
+export { reverseArray } from './reverseArray.js';
+export { sortLowestToHighest } from './sortLowestToHighest.js';
+export { filterOutNegatives } from './filterOutNegatives.js';
+export { removeWhitespace } from "./removeWhitespace.js";
+export { isDivisibleByTen } from "./isDivisibleByTen.js";
+export { numberOfVowels } from "./numberOfVowels.js";
+export { kilosToMiles } from "./kilosToMiles.js";

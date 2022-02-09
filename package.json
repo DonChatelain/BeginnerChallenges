@@ -5,8 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node ./betterProject/index.js",
-    "dev": "nodemon ./betterProject/index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "start:better": "node betterIndex.js",
+    "dev:better": "nodemon betterIndex.js"
   },
   "author": "",
   "license": "ISC",

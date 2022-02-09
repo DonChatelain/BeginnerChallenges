@@ -5,10 +5,12 @@ export const test = (opts, ...args) => {
   const {
     fn,
     expected,
-    arrayComparator = false,
+    // arrayComparator = false,
   } = opts;
   const actual = fn(...args);
   let pass = false;
+
+  const arrayComparator = Array.isArray(actual)
 
   if (arrayComparator === true) {
     pass = compareArrays(actual, expected);
@@ -20,5 +22,8 @@ export const test = (opts, ...args) => {
     console.log('Pass'.green , fn.name);
   } else {
     console.error('Fail'.red, fn.name);
+    console.error(`   Expected:`,( expected + '').blue);
+    console.error(`   Actual:`, (actual + '').red);
+    console.error(`   Arguments:`, ...args)
   }
 };

@@ -1,5 +1,5 @@
 import 'colors'; // npm package I added to easily add console.log colors
-
+import { test } from './test.js';
 /**
   index.js (ran by either importing in an HTML or running node index.js)
   Essentially define functions for each thing you're trying to do.
@@ -7,8 +7,9 @@ import 'colors'; // npm package I added to easily add console.log colors
   Then log out your pass or failures. This is the foundation of unit tests and is really helpful sometimes when writing code
 */
 /**
- * Now fill out these fuckers
- */
+ * Now fill out these functions mother fucker
+ * See "expected" values from tests below for help on return value and formatting and tweak "expected" if needed
+ * */
 
 const printOneThruTen = () => {
 
@@ -18,7 +19,6 @@ const printMultiplyTables = (num) => {
 
 };
 
-// find ratio on google. This may fail depending on how many decimals you use in the algorithm
 const kilosToMiles = (kilos) => {
 
 };
@@ -51,17 +51,22 @@ const numberOfVowels = (str) => {
 
 };
 
+// LET'S TEST!
+
 test({
   fn: printOneThruTen,
   expected: [1,2,3,4,5,6,7,8,9,10],
-  arrayComparator: true,
 })
 
 test({
   fn: printMultiplyTables,
   expected: ['4 x 1 = 4', '4 x 2 = 8', '4 x 3 = 12', '4 x 4 = 16', '4 x 5 = 20'],
-  arrayComparator: true,
 }, 4)
+
+test({
+  fn: kilosToMiles,
+  expected: 6.215040397762586,
+}, 10)
 
 test({
   fn: sumNumbers,
@@ -71,67 +76,29 @@ test({
 test({
   fn: reverseArray,
   expected: [5,4,3,2,1],
-  arrayComparator: true
 }, [1, 2, 3, 4, 5])
 
 test({
   fn: sortLowestToHighest,
   expected: [1, 2, 3, 4, 5],
-  arrayComparator: true
 }, [5,1,4,2,3])
 
 test({
   fn: filterOutNegatives,
   expected: [1,1,1],
-  arrayComparator: true
   }, [-1, 1, -1, 1, 1, -1])
 
 test({
   fn: removeWhitespace,
   expected: 'just a string',
-  arrayComparator: false
 }, '       just a string         ')
 
 test({
   fn: isDivisibleByTen,
   expected: true,
-  arrayComparator: false
 }, 20)
 
 test({
   fn: numberOfVowels,
   expected: 4,
 }, 'bitch titties');
-
-// Comparing array is tricky and you can't just === them for equality
-// heres a helper to compare
-function compareArrays(arr1, arr2) {
-  if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
-    return false;
-  }
-  return arr1.every((primitive, i) => primitive === arr2[i])
-}
-
-function test(opts, ...args) {
-  const {
-    fn,
-    expected,
-    arrayComparator = false,
-  } = opts;
-  const actual = fn(...args);
-  let pass = false;
-
-  if (arrayComparator === true) {
-    pass = compareArrays(actual, expected);
-  } else {
-    pass = actual === expected;
-  }
-
-  if (pass) {
-    console.log('Pass'.green , fn.name);
-  } else {
-    console.error(`Fail`.red, fn.name);
-    console.error(`    Expected`, (expected + '').blue)
-    console.error(`    Actual`, (actual + '').red);
-  }
-};
